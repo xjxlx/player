@@ -8,4 +8,6 @@
     <string name="no_url">播放地址无效</string>
     <string name="jump_ad">跳过</string>
 
+    <item name="custom_full_id" type="id" />
+    <item name="custom_small_id" type="id" />
 </resources>
