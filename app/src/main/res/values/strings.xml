@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">player</string>
+    <string name="default_text">我是默认的数据</string>
 </resources>
