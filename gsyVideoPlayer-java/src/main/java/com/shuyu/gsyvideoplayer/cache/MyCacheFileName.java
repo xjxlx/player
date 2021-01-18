@@ -22,7 +22,7 @@ public class MyCacheFileName implements FileNameGenerator {
     // 资源最新的更新TAG
     private String mUrlLastModified = null;
     // 文件的名字
-    private String mFimeName;
+    private String mFileName;
     private Context mContext;
 
     public MyCacheFileName(Context mContext) {
@@ -35,7 +35,7 @@ public class MyCacheFileName implements FileNameGenerator {
         String newSourceKey = getNewSourceKey(url);
         // 这里需要判断，如果拿不到网络获取的信息，就先从本地获取上一次请求后存入到Sp中的信息
         if (!TextUtils.isEmpty(newSourceKey)) {
-            mFimeName = ProxyCacheUtils.computeMD5(newSourceKey);
+            mFileName = ProxyCacheUtils.computeMD5(newSourceKey);
             Log.e("XJX", "从网络获取的数据信息！");
         } else {
             // 获取上一次存入对应key的Value
@@ -43,16 +43,16 @@ public class MyCacheFileName implements FileNameGenerator {
 
             // 如果本地的sp中也获取不到，则说明是第一次请求，还没有加载过，就去重新生成
             if (!TextUtils.isEmpty(mSpValue)) {
-                mFimeName = ProxyCacheUtils.computeMD5(mSpValue);
+                mFileName = ProxyCacheUtils.computeMD5(mSpValue);
                 Log.e("XJX", "从本地的SP中获取的数据信息！");
             } else {
                 // 使用本地生成的方法去获取
-                mFimeName = getExtension(url);
+                mFileName = getExtension(url);
                 Log.e("XJX", "使用本地的方法总获取的数据信息！");
             }
 
         }
-        return mFimeName;
+        return mFileName;
     }
 
     /**
