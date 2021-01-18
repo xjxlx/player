@@ -7,6 +7,10 @@ import android.widget.SeekBar;
 
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 
+/**
+ * 使用的时候，要在清单文件中加入以下的配置，否则会导致横竖屏切换的时候发生异常
+ * android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+ */
 public class BaseBuddyVideoPlayer extends StandardGSYVideoPlayer {
 
     public BaseBuddyVideoPlayer(Context context, Boolean fullFlag) {
