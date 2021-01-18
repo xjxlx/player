@@ -2,11 +2,10 @@ package com.apphelper.player;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.RelativeLayout;
 
-import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
+import com.shuyu.gsyvideoplayer.app.BaseBuddyVideoPlayer;
 
-public class BaseVideoView extends StandardGSYVideoPlayer {
+public class BaseVideoView extends BaseBuddyVideoPlayer {
 
     public BaseVideoView(Context context, Boolean fullFlag) {
         super(context, fullFlag);
