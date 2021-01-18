@@ -33,8 +33,15 @@ public class BaseBuddyVideoPlayer extends StandardGSYVideoPlayer {
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         super.onProgressChanged(seekBar, progress, fromUser);
-        // 累积视频的播放时长
-        GsyApplication.getInstance(seekBar.getContext()).autoAdd();
+
+        int currentState = getCurrentState();
+        if (currentState == CURRENT_STATE_PLAYING) {
+            Log.e(GsyApplication.TAG, "播放中的状态！");
+            // 累积视频的播放时长
+            GsyApplication.getInstance(seekBar.getContext()).autoAdd();
+        } else {
+            Log.e(GsyApplication.TAG, "不是播放中的状态！");
+        }
     }
 
     @Override
