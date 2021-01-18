@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Handler;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +18,6 @@ import android.widget.FrameLayout;
 import androidx.transition.TransitionManager;
 
 import com.shuyu.gsyvideoplayer.R;
-import com.shuyu.gsyvideoplayer.app.GsyApplication;
 import com.shuyu.gsyvideoplayer.utils.CommonUtil;
 import com.shuyu.gsyvideoplayer.utils.Debuger;
 import com.shuyu.gsyvideoplayer.utils.OrientationOption;
@@ -112,7 +110,6 @@ public abstract class GSYBaseVideoPlayer extends GSYVideoControlView {
         mSmallClose = findViewById(R.id.small_close);
     }
 
-
     @Override
     public void onBackFullscreen() {
         clearFullscreenLayout();
@@ -169,10 +166,6 @@ public abstract class GSYBaseVideoPlayer extends GSYVideoControlView {
         super.onPrepared();
         //确保开启竖屏检测的时候正常全屏
         checkAutoFullSizeWhenFull();
-
-        Log.e(GsyApplication.TAG, "----->onPrepared --- 视频开始播放了！");
-        // 在视频开始播放的时候数量也开始增加以下，不然有时候不会触发这个操作
-        GsyApplication.getInstance(mContext).autoAdd();
     }
 
     @Override
@@ -182,7 +175,6 @@ public abstract class GSYBaseVideoPlayer extends GSYVideoControlView {
             checkAutoFullSizeWhenFull();
         }
     }
-
 
     private ViewGroup getViewGroup() {
         return (ViewGroup) (CommonUtil.scanForActivity(getContext())).findViewById(Window.ID_ANDROID_CONTENT);
@@ -349,7 +341,6 @@ public abstract class GSYBaseVideoPlayer extends GSYVideoControlView {
             frameLayout.setVisibility(VISIBLE);
         }
 
-
         if (mVideoAllCallBack != null) {
             Debuger.printfError("onEnterFullscreen");
             mVideoAllCallBack.onEnterFullscreen(mOriginUrl, mTitle, gsyVideoPlayer);
@@ -396,7 +387,6 @@ public abstract class GSYBaseVideoPlayer extends GSYVideoControlView {
             getFullscreenButton().setImageResource(getEnlargeImageRes());
         }
     }
-
 
     /**
      * 退出window层播放全屏效果
@@ -552,7 +542,6 @@ public abstract class GSYBaseVideoPlayer extends GSYVideoControlView {
 
     protected abstract int getSmallId();
 
-
     /************************* 开放接口 *************************/
 
     /**
@@ -618,7 +607,6 @@ public abstract class GSYBaseVideoPlayer extends GSYVideoControlView {
      */
     @SuppressWarnings("ResourceType, unchecked")
     public GSYBaseVideoPlayer startWindowFullscreen(final Context context, final boolean actionBar, final boolean statusBar) {
-
 
         mSystemUiVisibility = ((Activity) context).getWindow().getDecorView().getSystemUiVisibility();
 
@@ -748,7 +736,6 @@ public abstract class GSYBaseVideoPlayer extends GSYVideoControlView {
         return null;
     }
 
-
     /**
      * 显示小窗口
      */
@@ -876,7 +863,6 @@ public abstract class GSYBaseVideoPlayer extends GSYVideoControlView {
         this.mLockLand = lockLand;
     }
 
-
     public boolean isRotateWithSystem() {
         return mRotateWithSystem;
     }
@@ -982,7 +968,6 @@ public abstract class GSYBaseVideoPlayer extends GSYVideoControlView {
     public void setAutoFullWithSize(boolean autoFullWithSize) {
         this.mAutoFullWithSize = autoFullWithSize;
     }
-
 
     public boolean isNeedAutoAdaptation() {
         return isNeedAutoAdaptation;
