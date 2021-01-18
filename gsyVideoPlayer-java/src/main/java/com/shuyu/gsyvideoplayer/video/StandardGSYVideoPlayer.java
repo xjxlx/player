@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,11 +14,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.shuyu.gsyvideoplayer.R;
-import com.shuyu.gsyvideoplayer.app.GsyApplication;
 import com.shuyu.gsyvideoplayer.listener.GSYVideoShotListener;
 import com.shuyu.gsyvideoplayer.listener.GSYVideoShotSaveListener;
 import com.shuyu.gsyvideoplayer.utils.Debuger;
@@ -85,7 +82,6 @@ public class StandardGSYVideoPlayer extends GSYVideoPlayer {
      */
     public StandardGSYVideoPlayer(Context context, Boolean fullFlag) {
         super(context, fullFlag);
-        Log.e(GsyApplication.TAG, "StandardGSYVideoPlayer --->Context context, Boolean fullFlag ：" + fullFlag);
     }
 
     public StandardGSYVideoPlayer(Context context) {
@@ -94,14 +90,12 @@ public class StandardGSYVideoPlayer extends GSYVideoPlayer {
 
     public StandardGSYVideoPlayer(Context context, AttributeSet attrs) {
         super(context, attrs);
-        Log.e(GsyApplication.TAG, "Context context, AttributeSet attrs");
-        // 如果进入到了这里，说明窗口没有被打开
-        GsyApplication.getInstance(context).setWindow(false);
     }
 
     @Override
     protected void init(Context context) {
         super.init(context);
+
 
         //增加自定义ui
 
@@ -293,6 +287,7 @@ public class StandardGSYVideoPlayer extends GSYVideoPlayer {
         }
     }
 
+
     /**
      * 触摸亮度dialog，如需要自定义继承重写即可，记得重写dismissBrightnessDialog
      */
@@ -326,6 +321,7 @@ public class StandardGSYVideoPlayer extends GSYVideoPlayer {
         if (mBrightnessDialogTv != null)
             mBrightnessDialogTv.setText((int) (percent * 100) + "%");
     }
+
 
     @Override
     protected void dismissBrightnessDialog() {
@@ -434,6 +430,7 @@ public class StandardGSYVideoPlayer extends GSYVideoPlayer {
         setViewShowState(mBottomProgressBar, VISIBLE);
         setViewShowState(mStartButton, INVISIBLE);
     }
+
 
     @Override
     protected void changeUiToNormal() {
@@ -637,6 +634,7 @@ public class StandardGSYVideoPlayer extends GSYVideoPlayer {
         return R.id.volume_progressbar;
     }
 
+
     /**
      * 亮度dialog的layoutId
      * 继承后重写可返回自定义
@@ -819,6 +817,7 @@ public class StandardGSYVideoPlayer extends GSYVideoPlayer {
         mVolumeProgressDrawable = drawable;
     }
 
+
     /**
      * 中间进度条
      */
@@ -833,6 +832,7 @@ public class StandardGSYVideoPlayer extends GSYVideoPlayer {
         mDialogProgressHighLightColor = highLightColor;
         mDialogProgressNormalColor = normalColor;
     }
+
 
     /************************************* 关于截图的 ****************************************/
 
@@ -880,22 +880,5 @@ public class StandardGSYVideoPlayer extends GSYVideoPlayer {
     public void restartTimerTask() {
         startProgressTimer();
         startDismissControlViewTimer();
-    }
-
-    @Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        super.onProgressChanged(seekBar, progress, fromUser);
-        // 累积视频的播放时长
-        GsyApplication.getInstance(seekBar.getContext()).autoAdd();
-    }
-
-    @Override
-    public void onPrepared() {
-        super.onPrepared();
-
-        // 视频加载完毕，开始播放了
-        Log.e(GsyApplication.TAG, "----->onPrepared --- 视频开始播放了！");
-        // 在视频开始播放的时候数量也开始增加以下，不然有时候不会触发这个操作
-        GsyApplication.getInstance(mContext).autoAdd();
     }
 }
