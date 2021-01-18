@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.shuyu.gsyvideoplayer.utils.GsySpUtil;
 
@@ -94,7 +93,6 @@ public class GsyApplication {
             // 第一次发送数据和第二次发送数据，相差不能小于1秒，否则就不发送
             if ((endTimeMillis > 0) && ((currentTimeMillis - endTimeMillis) < 1000)) {
                 Log.e(TAG, "数据异常，不予统计！" + (currentTimeMillis - endTimeMillis));
-                Toast.makeText(mContext,"数据异常，不予统计！",Toast.LENGTH_LONG).show();
                 endTimeMillis = currentTimeMillis;
                 return;
             }
@@ -105,12 +103,10 @@ public class GsyApplication {
             Message message = mHandler.obtainMessage();
             message.what = CODE_AUTO_ADD_TIME;
             mHandler.sendMessage(message);
-            Toast.makeText(mContext,"数据正常，开始统计！",Toast.LENGTH_LONG).show();
+            Log.e(TAG, "数据正常，开始统计！");
 
         } else {
-           // Log.e(TAG, "是否在窗口打开的模式：" + window + "   是否用户已经设置过了：" + b);
-            Toast.makeText(mContext, "是否在窗口打开的模式：" + window + "   是否用户已经设置过了：" + b,Toast.LENGTH_LONG).show();
-
+            Log.e(TAG, "是否在窗口打开的模式：" + window + "   是否用户已经设置过了：" + b);
         }
     }
 
