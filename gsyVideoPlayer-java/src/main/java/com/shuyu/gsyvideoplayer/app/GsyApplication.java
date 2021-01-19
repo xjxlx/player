@@ -56,9 +56,10 @@ public class GsyApplication {
      */
     public synchronized static GsyApplication getInstance(Context context) {
         mContext = context;
-        if (mTotalTime < 0) {
+        if (mTotalTime < -1) {
             // 获取设定视频的总时长
             mTotalTime = GsySpUtil.getInt(context, KEY_PLAYER_TOTAL_TIME);
+            Log.e(TAG, "获取的总时长为：" + mTotalTime);
         }
 
         if (mApp == null) {
@@ -72,6 +73,7 @@ public class GsyApplication {
      */
     public void setTotalNumber(int value) {
         GsySpUtil.putInt(mContext, KEY_PLAYER_TOTAL_TIME, value);
+        Log.e(TAG, "存入的总时长为：" + value);
     }
 
     /**
@@ -84,7 +86,7 @@ public class GsyApplication {
          * 2：用户设置过了才生效
          */
         boolean window = isWindow();
-        boolean b = mTotalTime > 0;
+        boolean b = mTotalTime > -1;
         if (!window && b) {// 只有在用户设置过了，才会去生效，否则如果检测到时-1的话，就不做任何的操作
 
             // 当前的时间
@@ -104,7 +106,7 @@ public class GsyApplication {
             message.what = CODE_AUTO_ADD_TIME;
             mHandler.sendMessage(message);
         } else {
-           // Log.e(TAG, "是否在窗口打开的模式：" + window + "   是否用户已经设置过了：" + b);
+            // Log.e(TAG, "是否在窗口打开的模式：" + window + "   是否用户已经设置过了：" + b);
         }
     }
 
