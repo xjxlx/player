@@ -105,8 +105,10 @@ public class GsyApplication {
             Message message = mHandler.obtainMessage();
             message.what = CODE_AUTO_ADD_TIME;
             mHandler.sendMessage(message);
+            Log.e(TAG, "数据正常，开始统计！");
+
         } else {
-            // Log.e(TAG, "是否在窗口打开的模式：" + window + "   是否用户已经设置过了：" + b);
+            Log.e(TAG, "是否在窗口打开的模式：" + window + "   是否用户已经设置过了：" + b);
         }
     }
 
