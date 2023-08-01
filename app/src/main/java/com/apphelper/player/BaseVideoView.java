@@ -3,7 +3,7 @@ package com.apphelper.player;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import com.shuyu.gsyvideoplayer.app.BaseBuddyVideoPlayer;
+import com.android.helper.player.app.BaseBuddyVideoPlayer;
 
 public class BaseVideoView extends BaseBuddyVideoPlayer {
 

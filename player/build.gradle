@@ -7,6 +7,7 @@ plugins {
 def version = rootProject.ext.android
 
 android {
+    // namespace 'com.android.helper.player'
     compileSdkVersion version.compileSdkVersion
     buildToolsVersion version.buildToolsVersion
 
@@ -15,12 +16,9 @@ android {
         targetSdkVersion version.targetSdkVersion
         versionCode version.versionCode
         versionName version.versionName
-    }
 
-    sourceSets {
-        main {
-            jniLibs.srcDirs = ['libs']
-        }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -46,13 +44,7 @@ dependencies {
     //完整版引入
     // api 'com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer:v8.1.6-jitpack'
     //完整版引入
-    implementation 'com.github.CarGuo.GSYVideoPlayer:gsyVideoPlayer:v8.1.4-jitpack'
-
-    // api 'com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer:v8.2.0-release-jitpack'
-    // 完整版引入
-    // api 'com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer:v8.3.0-release-jitpack'
-    //是否需要AliPlayer模式
-    // api 'com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer-aliplay:v8.3.0-release-jitpack'
+    api 'com.github.CarGuo.GSYVideoPlayer:gsyVideoPlayer:v8.1.4-jitpack'
 }
 
 afterEvaluate {
@@ -62,7 +54,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.apphelper.player'//插件id，格式：com.gitee/github.用户名
                 artifactId = 'player'//插件名称
-                version = '2.0.0'//版本号
+                version = '2.1.0'//版本号
                 //引用使用格式：implementation 'com.gitee.xiaweifeng:JitPackTest11:1.0'
             }
         }
