@@ -1,11 +1,11 @@
 package com.apphelper.player;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
 import com.shuyu.gsyvideoplayer.builder.GSYVideoOptionBuilder;
@@ -82,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //直接横屏
                 orientationUtils.resolveByClick();
-
                 //第一个true是否需要隐藏actionbar，第二个true是否需要隐藏statusbar
                 detailPlayer.startWindowFullscreen(MainActivity.this, true, true);
             }
@@ -117,11 +116,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (isPlay) {
-            detailPlayer.getCurrentPlayer().release();
-        }
-        if (orientationUtils != null)
-            orientationUtils.releaseListener();
+//        if (isPlay) {
+//            detailPlayer.getCurrentPlayer().release();
+//        }
+//        if (orientationUtils != null){
+//            orientationUtils.releaseListener();
+//        }
     }
 
     /**
@@ -131,9 +131,9 @@ public class MainActivity extends AppCompatActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         //如果旋转了就全屏
-        if (isPlay && !isPause) {
-            detailPlayer.onConfigurationChanged(this, newConfig, orientationUtils, true, true);
-        }
+//        if (isPlay && !isPause) {
+//            detailPlayer.onConfigurationChanged(this, newConfig, orientationUtils, true, true);
+//        }
     }
 
 }

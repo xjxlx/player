@@ -1,54 +1,68 @@
-apply plugin: 'com.android.library'
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'//用来推送到jitpack
+}
+
+def version = rootProject.ext.android
 
 android {
-    def globalConfiguration = rootProject.extensions.getByName("ext")
-    compileSdkVersion globalConfiguration.androidCompileSdkVersion
-    buildToolsVersion globalConfiguration.androidBuildToolsVersion
+    compileSdkVersion version.compileSdkVersion
+    buildToolsVersion version.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion globalConfiguration.androidMinSdkVersion
-        targetSdkVersion globalConfiguration.androidTargetSdkVersion
-
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion version.minSdkVersion
+        targetSdkVersion version.targetSdkVersion
+        versionCode version.versionCode
+        versionName version.versionName
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
         }
     }
-    lintOptions {
-        abortOnError false
-    }
 
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation androidDependencies.appcompat_v7
+    //noinspection GradleDependency
+    implementation 'androidx.appcompat:appcompat:1.3.1'
 
-    def viewDependencies = rootProject.ext.viewDependencies
-    api viewDependencies.ijkplayer_java
-    api viewDependencies.ijkplayer_exo
-    api viewDependencies.transitionseverywhere
-    //api project(':gsyVideoPlayer-proxy_cache')
-    //api project(':gsyVideoPlayer-base')
-    api "com.shuyu:gsyVideoPlayer-base:$gsyVideoVersion"
-    api "com.shuyu:gsyvideoplayer-androidvideocache:$gsyVideoVersion"
+    //完整版引入
+    api 'com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer:v8.1.6-jitpack'
 
-    api "com.shuyu:GSYVideoPlayer-exo2:$gsyVideoVersion"
-    api "com.shuyu:gsyVideoPlayer-armv5:$gsyVideoVersion"
-    api "com.shuyu:gsyVideoPlayer-armv7a:$gsyVideoVersion"
-    api "com.shuyu:gsyVideoPlayer-arm64:$gsyVideoVersion"
-    api "com.shuyu:gsyVideoPlayer-x64:$gsyVideoVersion"
-    api "com.shuyu:gsyVideoPlayer-x86:$gsyVideoVersion"
+    // api 'com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer:v8.2.0-release-jitpack'
+    // 完整版引入
+    // api 'com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer:v8.3.0-release-jitpack'
+    //是否需要AliPlayer模式
+    // api 'com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer-aliplay:v8.3.0-release-jitpack'
 }
 
-// apply from: './bintray.gradle'
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.apphelper.player'//插件id，格式：com.gitee/github.用户名
+                artifactId = 'player'//插件名称
+                version = '2.0.0'//版本号
+                //引用使用格式：implementation 'com.gitee.xiaweifeng:JitPackTest11:1.0'
+            }
+        }
+    }
+}
