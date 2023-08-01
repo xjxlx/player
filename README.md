@@ -2,24 +2,6 @@
 
 gsy视频的封装
 
-allprojects {
-repositories {
-maven { url 'https://maven.aliyun.com/repository/public' }
-maven { url 'https://maven.aliyun.com/repository/central' }
-maven { url 'https://maven.aliyun.com/repository/google' }
-maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
-maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
-maven { url 'https://dl.google.com/dl/android/maven2/' }
-maven { url 'https://jitpack.io' }
-
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-}
-
-# 这个是一个封装了gsyPlayer的视频管理器，里面主要做了以下几点
-
 ## 1：更改了视频缓存到本地时候的文件名字
 
 ## 2：增加了自己需要的统计视频时长的逻辑，这一步其实可以单纯的继承原有的库文件来实现
@@ -35,5 +17,20 @@ maven { url 'https://jitpack.io' }
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
 
 ## 5: 依赖使用
+allprojects {
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+        maven { url 'https://dl.google.com/dl/android/maven2/' }
+        maven { url 'https://jitpack.io' }
 
-        implementation 'com.github.xjxlx:player:v2.0.1'
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+        
+implementation 'com.github.xjxlx:player:v2.0.1'
