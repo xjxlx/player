@@ -1,5 +1,5 @@
 include ':app'
 // include ':gsyVideoPlayer-java'
-include ':player'
+include ':gsyplayer'
 
 rootProject.name = "player"

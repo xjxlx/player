@@ -35,7 +35,7 @@ android {
 
 dependencies {
     // implementation project(path: ':gsyVideoPlayer-java')
-    implementation project(path: ':player')
+    implementation project(path: ':gsyplayer')
 
     //noinspection GradleDependency
     implementation 'androidx.core:core-ktx:1.6.0'
