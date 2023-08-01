@@ -28,8 +28,12 @@ maven { url 'https://jitpack.io' }
 
     https://github.com/CarGuo/GSYVideoPlayer
 
-# 三：使用步骤
+## 4：使用步骤
 
     1：继承 StandardGSYVideoPlayer 或者它的实现类去使用
     2：使用的时候，要在清单文件中加入以下的配置，否则会导致横竖屏切换的时候发生异常  
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+
+## 5: 依赖使用
+
+        implementation 'com.github.xjxlx:player:v2.0.1'
