@@ -33,4 +33,4 @@ allprojects {
     }
 }
         
-implementation 'com.github.xjxlx:player:v2.1.0'
+implementation 'com.github.xjxlx:player:v2.2.0'

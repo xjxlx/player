@@ -54,7 +54,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.apphelper.player'//插件id，格式：com.gitee/github.用户名
                 artifactId = 'player'//插件名称
-                version = '2.1.0'//版本号
+                version = '2.2.0'//版本号
                 //引用使用格式：implementation 'com.gitee.xiaweifeng:JitPackTest11:1.0'
             }
         }
