@@ -6,15 +6,12 @@ plugins {
 
 android {
     namespace = "com.apphelper.player"
-    compileSdk = libs.versions.compileSdks.get()
-        .toInt()
+    compileSdk = libs.versions.compileSdks.get().toInt()
 
     defaultConfig {
         applicationId = "com.apphelper.player"
-        minSdk = libs.versions.minSdk.get()
-            .toInt()
-        targetSdk = libs.versions.targetSdk.get()
-            .toInt()
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -37,8 +34,16 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }
 

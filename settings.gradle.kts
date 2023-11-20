@@ -1,10 +1,12 @@
 pluginManagement {
     repositories {
+        // maven { setUrl("https://maven.aliyun.com/repository/central") }
+        // maven { setUrl("https://maven.aliyun.com/repository/google") }
+        // maven { setUrl("https://oss.sonatype.org/content/repositories/snapshots") }
+        // maven { setUrl("https://dl.google.com/dl/android/maven2/") }
+
+        maven { setUrl("https://storage.googleapis.com/r8-releases/raw") }
         maven { setUrl("https://maven.aliyun.com/repository/public") }
-        maven { setUrl("https://maven.aliyun.com/repository/central") }
-        maven { setUrl("https://maven.aliyun.com/repository/google") }
-        maven { setUrl("https://oss.sonatype.org/content/repositories/snapshots") }
-        maven { setUrl("https://dl.google.com/dl/android/maven2/") }
         maven { setUrl("https://jitpack.io") }
 
         google()
@@ -17,11 +19,13 @@ pluginManagement {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        // maven { setUrl("https://maven.aliyun.com/repository/central") }
+        // maven { setUrl("https://maven.aliyun.com/repository/google") }
+        // maven { setUrl("https://oss.sonatype.org/content/repositories/snapshots") }
+        // maven { setUrl("https://dl.google.com/dl/android/maven2/") }
+
+        maven { setUrl("https://storage.googleapis.com/r8-releases/raw") }
         maven { setUrl("https://maven.aliyun.com/repository/public") }
-        maven { setUrl("https://maven.aliyun.com/repository/central") }
-        maven { setUrl("https://maven.aliyun.com/repository/google") }
-        maven { setUrl("https://oss.sonatype.org/content/repositories/snapshots") }
-        maven { setUrl("https://dl.google.com/dl/android/maven2/") }
         maven { setUrl("https://jitpack.io") }
 
         google()
