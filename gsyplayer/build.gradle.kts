@@ -48,7 +48,9 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(libs.appcompat)
     // api("com.github.CarGuo.GSYVideoPlayer:gsyVideoPlayer:v8.1.4-jitpack")
-
     // 当前编译版本31
-    api("com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer:v8.3.4-release-jitpack")
+    // api("com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer:v8.3.4-release-jitpack")
+
+    // last version
+    api("com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer:v8.5.0-release-jitpack")
 }
